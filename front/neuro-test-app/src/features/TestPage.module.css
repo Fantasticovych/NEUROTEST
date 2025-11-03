@@ -1,0 +1,442 @@
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  font-family: "Segoe UI", sans-serif;
+  color: #f1f1f1;
+  background: rgba(44, 40, 62, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-in-out;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 204, 0, 0.05), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(129, 118, 175, 0.05), transparent 40%),
+    radial-gradient(circle at 60% 30%, rgba(255, 255, 255, 0.05), transparent 40%);
+  animation: moveBackground 40s linear infinite;
+  z-index: 0;
+}
+
+.container::after {
+  animation-delay: -20s;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(20px, 30px) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+}
+
+.info {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #cfcfcf;
+  font-size: 1rem;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.questionCard {
+  background: #3a3550;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.questionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+.question {
+  font-weight: bold;
+  margin-bottom: 18px;
+  font-size: 1.15rem;
+  color: #ffcc00;
+}
+
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.answer {
+  background: #2f2a45;
+  border: 2px solid transparent;
+  padding: 14px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.answer:hover {
+  background: #403b5c;
+  transform: translateX(3px);
+}
+
+.selected {
+  border: 2px solid #ffcc00;
+  background: #49426a;
+  color: #ffcc00;
+}
+
+/* Правильна відповідь */
+.correct {
+  border: 2px solid #28a745;
+  background: #3c5c43;
+  color: #b5f5c5;
+}
+
+/* Неправильно обрана відповідь */
+.wrong {
+  border: 2px solid #dc3545;
+  background: #5a3232;
+  color: #ffb3b3;
+}
+
+
+.submitBtn {
+  display: block;
+  margin: 35px auto 0;
+  padding: 14px 28px;
+  background: #ffcc00;
+  color: #302c42;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: #e6b800;
+  transform: translateY(-2px);
+}
+
+.retakeBtn,
+.backBtn {
+  background: #8176af;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.retakeBtn:hover,
+.backBtn:hover {
+  background: #6b629a;
+  transform: translateY(-2px);
+}
+
+
+.result {
+  text-align: center;
+  margin-top: 35px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #3a3550;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.result h2 {
+  color: #ffcc00;
+  margin-bottom: 8px;
+}
+
+.percentage {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+
+.prevResultBox {
+  background: #3a3550;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #ffcc00;
+  margin-top: 50px;
+  animation: pulse 1.5s infinite;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 15px;
+  }
+
+  .questionCard {
+    padding: 18px;
+  }
+
+  .answer {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .submitBtn {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  color: #8176af;
+  font-family: "Montserrat", sans-serif;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border: 6px solid rgba(192, 183, 232, 0.3);
+  border-top: 6px solid #8176af;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loaderText {
+  font-size: 1.2rem;
+  color: #c0b7e8;
+  text-shadow: 0 0 10px rgba(192, 183, 232, 0.4);
+}
+
+/* --- НОВІ СТИЛІ ДЛЯ СУЧАСНОГО ВІДОБРАЖЕННЯ РЕЗУЛЬТАТУ --- */
+
+.resultContainer {
+  /* Займає всю доступну висоту екрана для ефекту */
+  min-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  /* Додаємо ефект градієнту/фону для результату, щоб зробити його більш "преміальним" */
+  background: radial-gradient(circle at top left, rgba(255, 204, 0, 0.03), transparent 50%),
+              radial-gradient(circle at bottom right, rgba(129, 118, 175, 0.03), transparent 50%);
+}
+
+.resultCard {
+  background: #3a3550;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  width: 100%;
+  animation: slideInUp 0.6s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultTitle {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffcc00;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+}
+
+.resultScoreContainer {
+  margin: 30px 0;
+}
+
+.resultScoreText {
+  font-size: 1.2rem;
+  color: #c0b7e8;
+  margin-bottom: 15px;
+}
+
+.resultScoreCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #2f2a45;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* Градієнтна обводка, яка змінюється в залежності від результату */
+  border: 6px solid #8176af; 
+  transition: all 0.5s ease;
+  margin: 0 auto;
+}
+
+/* Стилі для успішного проходження */
+.resultContainer[data-passed="true"] .resultScoreCircle {
+    border-color: #28a745;
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.8);
+}
+
+/* Стилі для невдалого проходження */
+.resultContainer[data-passed="false"] .resultScoreCircle {
+    border-color: #dc3545;
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.6);
+}
+
+.resultScore {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.resultPercentage {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  /* Колір залежить від успішності */
+  color: #00ff88; 
+  transition: color 0.5s ease;
+}
+
+.resultContainer[data-passed="true"] .resultPercentage {
+    color: #28a745; /* Зелений для успіху */
+}
+
+.resultContainer[data-passed="false"] .resultPercentage {
+    color: #dc3545; /* Червоний для провалу */
+}
+
+.percentSymbol {
+  font-size: 2.5rem;
+  font-weight: normal;
+  vertical-align: top;
+}
+
+.resultMessage {
+  font-size: 1.1rem;
+  color: #cfcfcf;
+  margin-bottom: 40px;
+}
+
+.resultActions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.resultActions .backBtn,
+.resultActions .retakeBtn {
+    margin: 0;
+}
+
+.viewCorrection {
+    margin-top: 25px;
+    color: #8176af;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.viewCorrection:hover {
+    opacity: 1;
+}
+
+/* Приховуємо стандартний resultBox, бо ми його замінили */
+.resultBox {
+    display: none; 
+}

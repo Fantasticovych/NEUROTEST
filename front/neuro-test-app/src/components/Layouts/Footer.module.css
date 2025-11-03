@@ -1,0 +1,147 @@
+.footer {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background: linear-gradient(180deg, rgba(33, 30, 46, 0.9), rgba(25, 23, 36, 0.95));
+  backdrop-filter: blur(12px);
+  border-top: 2px solid rgba(192, 183, 232, 0.3);
+  overflow: hidden;
+  color: #ffffff;
+  padding: 60px 20px 20px;
+  animation: fadeIn 1s ease;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #8176af, #c0b7e8, #8176af);
+  background-size: 300% 100%;
+  animation: glowMove 6s linear infinite;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footerLogo h3 {
+  font-size: 28px;
+  background: linear-gradient(90deg, #8176af, #c0b7e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.footerLogo p {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 280px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.footerLinks h4,
+.footerSocials h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footerLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footerLinks li {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footerLinks li:hover {
+  color: #c0b7e8;
+  transform: translateX(6px);
+}
+
+.footerSocials .socialIcons {
+  display: flex;
+  gap: 18px;
+}
+
+.footerSocials a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footerSocials a:hover {
+  color: #c0b7e8;
+  transform: translateY(-4px);
+}
+
+.footerBottom {
+  text-align: center;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+ 
+@media (max-width: 900px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footerLinks ul {
+    align-items: center;
+  }
+
+  .footerSocials .socialIcons {
+    justify-content: center;
+  }
+}
